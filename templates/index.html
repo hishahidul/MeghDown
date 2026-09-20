@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VidFetch</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Vid<span>Fetch</span></div>
+  <span class="badge">PRIVATE SERVER</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span> Fast · Private · Reliable <span class="dot"></span></div>
+  <h1>Download Video &amp; Audio</h1>
+  <p>Paste any URL, pick your format and quality — your file downloads instantly.</p>
+</div>
+
+<div class="wrap">
+  <div class="card">
+
+    <!-- FORMAT TABS -->
+    <div class="format-tabs">
+      <button class="tab-btn active" onclick="setFormat('mp4')" id="tab-mp4">🎬 MP4 Video</button>
+      <button class="tab-btn" onclick="setFormat('mp3')" id="tab-mp3">🎵 MP3 Audio</button>
+      <button class="tab-btn" onclick="setFormat('webm')" id="tab-webm">📦 WebM</button>
+    </div>
+
+    <!-- URL -->
+    <div class="url-row">
+      <input class="url-input" id="urlInput" type="url" placeholder="https://www.youtube.com/watch?v=..." />
+      <button class="btn-primary" onclick="fetchInfo()">🔍 Fetch</button>
+    </div>
+
+    <!-- QUALITY -->
+    <div class="quality-row" id="qualityRow">
+      <span class="quality-label">Quality:</span>
+      <div class="quality-pills" id="qualityPills">
+        <button class="pill" onclick="setQuality(this,'2160')">4K</button>
+        <button class="pill active" onclick="setQuality(this,'1080')">1080p</button>
+        <button class="pill" onclick="setQuality(this,'720')">720p</button>
+        <button class="pill" onclick="setQuality(this,'480')">480p</button>
+        <button class="pill" onclick="setQuality(this,'360')">360p</button>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status-msg" id="statusMsg"></div>
+
+    <!-- RESULT -->
+    <div class="result-area" id="resultArea">
+      <div class="video-preview">
+        <div class="thumb-wrap">
+          <img id="thumbImg" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:6px;">
+          <div class="thumb-icon" id="thumbIcon">🎬</div>
+        </div>
+        <div class="video-meta">
+          <div class="video-title" id="videoTitle">—</div>
+          <div class="video-sub" id="videoSub">—</div>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap" id="progressWrap" style="display:none">
+        <div class="progress-label">
+          <span id="progressLabel">Preparing…</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-sub" id="progressSub"></div>
+      </div>
+
+      <button class="btn-download" id="downloadBtn" onclick="startDownload()">
+        ⬇️ Download Now
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SUPPORTED PLATFORMS -->
+  <div class="platforms-wrap">
+    <div class="plat-label">Supported platforms</div>
+    <div class="platforms">
+      <span class="ptag">▶ YouTube</span>
+      <span class="ptag">📘 Facebook</span>
+      <span class="ptag">📸 Instagram</span>
+      <span class="ptag">🎵 TikTok</span>
+      <span class="ptag">🐦 Twitter/X</span>
+      <span class="ptag">📺 Vimeo</span>
+      <span class="ptag">🎬 Dailymotion</span>
+      <span class="ptag">📡 Twitch</span>
+      <span class="ptag">🔴 Reddit</span>
+      <span class="ptag">+ 1000 more</span>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ <strong>Educational / Private Use Only.</strong> Respect copyright and platform Terms of Service. In Sha Allah, use responsibly.
+  </div>
+</div>
+
+<footer>VidFetch &nbsp;·&nbsp; Powered by yt-dlp + Flask</footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
